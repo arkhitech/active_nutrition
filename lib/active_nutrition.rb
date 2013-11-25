@@ -64,8 +64,9 @@ module ActiveNutrition
     end
 
     def search(terms = "", options = {})
-      query = ["Long_Desc LIKE ? OR Long_Desc LIKE ? LIMIT ?", "%#{terms.gsub(" ", "%")}%", "%#{terms.split(" ").reverse.join("%")}% ", DEFAULT_SEARCH_LIMIT]
-      Food.wrap(FoodDes.find(:all, query))
+      options[:conditions] ||= ['"Long_Desc" ILIKE ? OR "Long_Desc" ILIKE ?', "%#{terms.gsub(" ", "%")}%", "%#{terms.split(" ").reverse.join("%")}%"]
+      options[:limit] ||= DEFAULT_SEARCH_LIMIT
+      Food.wrap(FoodDes.find(:all, options))
     end
 
     def get(ndb_no)
