@@ -11,7 +11,7 @@ require 'yaml'
 
 require 'rake'
 require 'json'
-require 'zip/zip'
+require 'zip'
 require 'active_record'
 require 'composite_primary_keys'
 
