@@ -1,3 +1,4 @@
+Rails 4 Compatible active_nutrition gem
 ## active_nutrition
 
 ActiveNutrition is an ActiveRecord-backed collection of models for storing and retrieving nutritional information from the USDA's Nutrient Database.
@@ -17,7 +18,7 @@ require 'active_nutrition'
 In a (possibly Rails) gemfile:
 
 ```ruby
-gem 'active_nutrition', '~> 0.5.0'
+gem 'active_nutrition', github: 'arkhitech/active_nutrition', branch: 'rails4'
 ```
 
 ### Getting the Data
