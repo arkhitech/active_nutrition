@@ -14,7 +14,7 @@ module ActiveNutrition
       end
 
       def self.wrap(obj)
-        if obj.is_a?(Array)
+        if obj.is_a?(Array) || obj.is_a?(ActiveRecord::Relation)
           obj.map { |o| new(o) }
         else
           new(obj)
