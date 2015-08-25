@@ -11,6 +11,13 @@ module ActiveNutrition
                      :description => :NutrDesc,
                      :tag_name => :Tagname,
                      :sr_order => :SR_Order }
+      def as_json(options = nil)
+        json = super
+        METHOD_MAP.each_pair do |method, attr_name|
+          json[method] = attributes[attr_name.to_s]
+        end
+        json
+      end
 
       METHOD_MAP.each_pair do |method, attr_name|
         define_method(method) { self.attributes[attr_name.to_s] }

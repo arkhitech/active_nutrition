@@ -15,6 +15,13 @@ module ActiveNutrition
       METHOD_MAP.each_pair do |method, attr_name|
         define_method(method) { attributes[attr_name.to_s] }
       end
+      def as_json(options = nil)
+        json = super
+        METHOD_MAP.each_pair do |method, attr_name|
+          json[method] = attributes[attr_name.to_s]
+        end
+        json
+      end
 
       def define_mappings
         METHOD_MAP.each_pair do |method, attr_name|

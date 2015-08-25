@@ -19,7 +19,7 @@ module ActiveNutrition
         else
           new(obj)
         end
-      end
+      end      
     end
   end
 end
